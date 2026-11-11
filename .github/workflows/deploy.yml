@@ -22,5 +22,5 @@ jobs:
         run: npm install --global vercel
 
       - name: Deploy Project to Vercel (Auto Create)
-        # Menghapus --scope agar Vercel otomatis membuat proyek baru di akun personal gratis Anda
-        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
+        # Menambahkan parameter --name dengan huruf kecil semua (ganti 'portofolio-next' sesuai keinginan Anda)
+        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --name=portofolio-next
