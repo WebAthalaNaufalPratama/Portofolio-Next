@@ -7,7 +7,6 @@ on:
 
 jobs:
   deploy:
-    # Mengunci ke ubuntu-24.04 untuk menghindari warning imigrasi OS GitHub
     runs-on: ubuntu-24.04 
 
     steps:
@@ -17,13 +16,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-size: 20 # Menyelaraskan lingkungan Node dengan dependensi Anda
+          node-version: 20
 
       - name: Install Vercel CLI
         run: npm install --global vercel
 
       - name: Deploy Project to Vercel (Auto Create)
-        # Menambahkan flag --yes agar Vercel otomatis membuat proyek baru tanpa bertanya di terminal
-        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
-        env:
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+        # Kita mengganti env dengan parameter --scope untuk memberi tahu ID akun tanpa memicu error missing PROJECT_ID
+        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }}
