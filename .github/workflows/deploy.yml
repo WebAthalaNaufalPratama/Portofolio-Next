@@ -22,5 +22,5 @@ jobs:
         run: npm install --global vercel
 
       - name: Deploy Project to Vercel (Auto Create)
-        # Kita mengganti env dengan parameter --scope untuk memberi tahu ID akun tanpa memicu error missing PROJECT_ID
-        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }} --scope=${{ secrets.VERCEL_ORG_ID }}
+        # Menghapus --scope agar Vercel otomatis membuat proyek baru di akun personal gratis Anda
+        run: vercel deploy --prod --yes --token=${{ secrets.VERCEL_TOKEN }}
